@@ -1,24 +1,57 @@
-# README
+## Usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column            |Type  |Options    |
+|------------------|------|-----------|
+|nickname          |string|null: false|
+|email             |string|null: false|
+|encrypted_password|string|null: false|
+|last-name         |string|null: false|
+|first-name        |string|null: false|
+|last-name-kana    |string|null: false|
+|first-name-kana   |string|null: false|
 
-Things you may want to cover:
+### Association
+has_many :item
+has_many :order
 
-* Ruby version
 
-* System dependencies
+## ItemsTabel
 
-* Configuration
+|Column    |Type      |Options                      |
+|----------|----------|-----------------------------|
+|item-name |string    |null: false                  |
+|item-info |text      |null: false                  |
+|item-price|string    |null: false                  |
+|user      |references|null: false,foreign_key: true|
+|order     |references|null: false,foreign_key: true|
 
-* Database creation
+### Association
+belongs_to :user
+has_one :order
 
-* Database initialization
 
-* How to run the test suite
+## OrdersTabel
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column|Type      |Options                      |
+|------|----------|-----------------------------|
+|user  |references|null: false,foreign_key: true|
+|item  |references|null: false,foreign_key: true|
 
-* Deployment instructions
+### Association
+belongs_to :user
+has_one :item
+has_one :shopping_address
 
-* ...
+
+## Shopping_addressesTabel
+
+|Column      |Type  |Options    |
+|------------|------|-----------|
+|postal-code |string|null: false|
+|city        |string|null: false|
+|addresses   |string|null: false|
+|building    |string|           |
+|phone-number|string|null: false|
+
+### Association
+belongs_to:order
