@@ -6,9 +6,12 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    # パスワードは、半角英数字混合での入力が必須であること
+    # パスワードは、半角英数字混合での入力が必須であること（英字のみ・数字のみは不可）
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
     validates_format_of :password, with: PASSWORD_REGEX
+
+    # 全角文字を含むパスワードでは登録できない
+    validates :password, format: { with:  /\A[a-z0-9]+\z/i}
 
     # 全角（漢字・ひらがな・カタカナ）
     validates :last_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
