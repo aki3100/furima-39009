@@ -27,7 +27,7 @@ class Item < ApplicationRecord
   validates :item_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   # ActiveHash「---」は保存できないようにする設定
-  with_options numericality: { other_then: 0 , message: "can't be blank"} do
+  with_options numericality: { other_then: 0 , message: "must be other_then: 0"} do
     validates :item_category_id
     validates :item_sales_status_id
     validates :item_shipping_fee_status_id
