@@ -96,6 +96,8 @@ GEM
     faker (2.22.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
+    gimei (1.1.0)
+      romaji
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -172,6 +174,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
+    rails-i18n (7.0.6)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (6.0.6.1)
       actionpack (= 6.0.6.1)
       activesupport (= 6.0.6.1)
@@ -188,6 +193,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.5)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     rspec-core (3.12.1)
       rspec-support (~> 3.12.0)
     rspec-expectations (3.12.2)
@@ -291,6 +298,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
+  gimei
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
@@ -299,6 +307,7 @@ DEPENDENCIES
   pg
   puma (~> 3.11)
   rails (~> 6.0.0)
+  rails-i18n
   rspec-rails (~> 4.0.0)
   rubocop
   sass-rails (~> 5)
