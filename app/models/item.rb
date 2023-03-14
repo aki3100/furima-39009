@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   end
 
   # 300円以上かつ9,999,999円以下で、半角数字でないと入力不可
-  validates :item_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :item_price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   # ActiveHash「---」は保存できないようにする設定
   with_options numericality: { other_than: 0, message: "「---」以外を選んでください" } do
