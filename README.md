@@ -23,10 +23,10 @@ has_many :orders
 |item_name                  |string    |null: false                   |
 |item_info                  |text      |null: false                   |
 |category_id                |integer   |null: false                   |
-|item_status_id            |integer   |null: false                   |
+|item_status_id             |integer   |null: false                   |
 |shopping_cost_id           |integer   |null: false                   |
 |prefecture_id              |integer   |null: false                   |
-|shopping_date_id      |integer   |null: false                   |
+|shopping_date_id           |integer   |null: false                   |
 |price                      |integer   |null: false                   |
 |user                       |references|null: false, foreign_key: true|
 
