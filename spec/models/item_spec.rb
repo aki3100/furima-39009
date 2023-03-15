@@ -10,27 +10,27 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it "カテゴリーが「---」以外であれば登録できる" do
-        @item.item_category_id = 1
+        @item.category_id = 1
         expect(@item).to be_valid
       end
       it "商品の状態が「---」以外であれば登録できる" do
-        @item.item_sales_status_id = 1
+        @item.item_status_id = 1
         expect(@item).to be_valid
       end
       it "配送料の負担が「---」以外であれば登録できる" do
-        @item.item_shopping_fee_status_id = 1
+        @item.shopping_cost_id = 1
         expect(@item).to be_valid
       end
       it "発送元の地域が「---」以外であれば登録できる" do
-        @item.item_prefecture_id = 1
+        @item.prefecture_id = 1
         expect(@item).to be_valid
       end
       it "発送までの日数が「---」以外であれば登録できる" do
-        @item.item_scheduled_delivery_id = 1
+        @item.shopping_date_id = 1
         expect(@item).to be_valid
       end
       it "価格が半角数字で￥300~￥9,999,999以内であれば登録できる" do
-        @item.item_price = 300
+        @item.price = 300
         expect(@item).to be_valid
       end
     end
@@ -52,49 +52,49 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Item infoを入力してください"
       end
       it "商品のカテゴリーが「---」だと登録できない" do
-        @item.item_category_id = 0
+        @item.category_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item category「---」以外を選んでください"
+        expect(@item.errors.full_messages).to include "Category「---」以外を選んでください"
       end
       it "商品の状態が「---」だと登録できない" do
-        @item.item_sales_status_id = 0
+        @item.item_status_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item sales status「---」以外を選んでください"
+        expect(@item.errors.full_messages).to include "Item_status「---」以外を選んでください"
       end
       it "配送料の負担が「---」だと登録できない" do
-        @item.item_shopping_fee_status_id = 0
+        @item.shopping_cost_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item shopping fee status「---」以外を選んでください"
+        expect(@item.errors.full_messages).to include "Shopping cost「---」以外を選んでください"
       end
       it "発送元の地域が「---」だと登録できない" do
-        @item.item_prefecture_id = 0
+        @item.prefecture_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item prefecture「---」以外を選んでください"
+        expect(@item.errors.full_messages).to include "Prefecture「---」以外を選んでください"
       end
       it "発送までの日数が「---」だと登録できない" do
-        @item.item_scheduled_delivery_id = 0
+        @item.shopping_date_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item scheduled delivery「---」以外を選んでください"
+        expect(@item.errors.full_messages).to include "Shopping_date「---」以外を選んでください"
       end
       it "価格が空白だと登録できない" do
-        @item.item_price = ""
+        @item.price = ""
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item priceは数値で入力してください"
+        expect(@item.errors.full_messages).to include "Priceは数値で入力してください"
       end
       it "販売価格の数字が全角だと登録できない" do
-        @item.item_price = "３００"
+        @item.price = "３００"
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item priceは数値で入力してください"
+        expect(@item.errors.full_messages).to include "Priceは数値で入力してください"
       end
       it "販売価格が「￥299」以下だと登録できない" do
-        @item.item_price = 299
+        @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item priceは300以上の値にしてください"
+        expect(@item.errors.full_messages).to include "Priceは300以上の値にしてください"
       end
       it "販売価格が「￥10,000,000」以上だと登録できない" do
-        @item.item_price = 10_000_000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item priceは9999999以下の値にしてください"
+        expect(@item.errors.full_messages).to include "Priceは9999999以下の値にしてください"
       end
       it 'ユーザーが紐付いていなければ投稿できない' do
         @item.user = nil
