@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   # ActiveHashのアソシエーション
   belongs_to :category
   belongs_to :item_status
-  belongs_to :shopping_charges
+  belongs_to :shopping_cost
   belongs_to :prefecture
   belongs_to :shopping_date
 
@@ -18,7 +18,7 @@ class Item < ApplicationRecord
     validates :item_info
     validates :item_category_id
     validates :item_sales_status_id
-    validates :item_shipping_fee_status_id
+    validates :shopping_cost_id
     validates :item_prefecture_id
     validates :item_scheduled_delivery_id
   end
@@ -30,7 +30,7 @@ class Item < ApplicationRecord
   with_options numericality: { other_than: 0, message: "「---」以外を選んでください" } do
     validates :item_category_id
     validates :item_sales_status_id
-    validates :item_shipping_fee_status_id
+    validates :shopping_cost_id
     validates :item_prefecture_id
     validates :item_scheduled_delivery_id
   end

@@ -18,7 +18,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it "配送料の負担が「---」以外であれば登録できる" do
-        @item.item_shipping_fee_status_id = 1
+        @item.item_shopping_fee_status_id = 1
         expect(@item).to be_valid
       end
       it "発送元の地域が「---」以外であれば登録できる" do
@@ -62,9 +62,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Item sales status「---」以外を選んでください"
       end
       it "配送料の負担が「---」だと登録できない" do
-        @item.item_shipping_fee_status_id = 0
+        @item.item_shopping_fee_status_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item shipping fee status「---」以外を選んでください"
+        expect(@item.errors.full_messages).to include "Item shopping fee status「---」以外を選んでください"
       end
       it "発送元の地域が「---」だと登録できない" do
         @item.item_prefecture_id = 0
