@@ -48,7 +48,7 @@ belongs_to:item
 has_one :shopping_address
 
 
-## Shopping_addressesTabel
+## PaymentsTabel
 
 |Column            |Type      |Options                       |
 |------------------|----------|------------------------------|
