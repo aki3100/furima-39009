@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe OrderPayment, type: :model do
-  before do
-    @order_payment = FactoryBot.build(:order_payment)
-  end
 
   describe '商品購入機能' do
+    before do
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      @order_payment = FactoryBot.build(:order_payment, user_id: user.id, item_id: item.id)
+    end
+
     context '商品が購入できる場合' do
       it 'すべての情報が存在すれば登録できる' do
         expect(@order_payment).to be_valid
@@ -14,7 +17,7 @@ RSpec.describe OrderPayment, type: :model do
         @order_payment.building = ''
         expect(@order_payment).to be_valid
       end
-      it '電話番号が11桁以内の数字であれば登録できる' do
+      it '電話番号が10桁でも登録できる' do
         @order_payment.building = '0123456789'
         expect(@order_payment).to be_valid
       end

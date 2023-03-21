@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :set_item_params,  only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @order_payment = OrderPayment.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_payment = OrderPayment.new(order_params)
     if @order_payment.valid?
       payjp_params
@@ -17,6 +17,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def set_item_params
+    @item = Item.find(params[:item_id])
+  end
 
   def order_params
     params.require(:order_payment).permit(:postal_code, :prefecture_id, :city, :addresses, :building, :phone_number).merge(

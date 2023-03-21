@@ -130,7 +130,7 @@
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
         <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" if item.image.attached? %>
-          <% if item.blank? %>
+          <% if item.order.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
