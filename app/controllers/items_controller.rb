@@ -59,5 +59,4 @@ class ItemsController < ApplicationController
   def same_parson
     @item.user_id == current_user.id
   end
-
 end
