@@ -44,11 +44,11 @@ has_one :order
 
 ### Association
 belongs_to :user
-belongs_to:item
-has_one :shopping_address
+belongs_to :item
+has_one :payment
 
 
-## Shopping_addressesTabel
+## PaymentsTabel
 
 |Column            |Type      |Options                       |
 |------------------|----------|------------------------------|
@@ -61,4 +61,4 @@ has_one :shopping_address
 |order             |references|null: false, foreign_key: true|
 
 ### Association
-belongs_to:order
+belongs_to :order
