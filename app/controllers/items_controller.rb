@@ -23,9 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if same_parson
-
-    redirect_to action: :index
+    same_parson
   end
 
   def update
@@ -57,6 +55,9 @@ class ItemsController < ApplicationController
   end
 
   def same_parson
-    @item.user_id == current_user.id
+    if @item.user_id == current_user.id && @item.order.nil?
+    else
+      redirect_to root_path
+    end
   end
 end
