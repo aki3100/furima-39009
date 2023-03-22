@@ -28,7 +28,7 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   # ActiveHash「---」は保存できないようにする設定
-  with_options numericality: { other_than: 0, message: '「---」以外を選んでください' } do
+  with_options numericality: { other_than: 0, message: "can't be blank" } do
     validates :category_id
     validates :item_status_id
     validates :shopping_cost_id
