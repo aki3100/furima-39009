@@ -44,7 +44,7 @@ RSpec.describe OrderPayment, type: :model do
         @order_payment.valid?
         expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ '
       end
-      it '郵便番号に「-」ががないと登録できない' do
+      it '郵便番号に「-」がないと登録できない' do
         @order_payment.postal_code = '1111111'
         @order_payment.valid?
         expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ '
