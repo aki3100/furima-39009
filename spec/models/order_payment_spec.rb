@@ -6,6 +6,7 @@ RSpec.describe OrderPayment, type: :model do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
       @order_payment = FactoryBot.build(:order_payment, user_id: user.id, item_id: item.id)
+      sleep(1)
     end
 
     context '商品が購入できる場合' do
