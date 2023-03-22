@@ -5,11 +5,11 @@ class OrderPayment
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'を半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ ' }
-    validates :prefecture_id, numericality: { other_than: 0, message: '「---」以外を選んでください' }
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "can't be blank" }
+    validates :prefecture_id, numericality: { other_than: 0, message: 'Please choose other than 「---」' }
     validates :city
     validates :addresses
-    validates :phone_number, format: { with: /\A[0-9]{10,11}+\z/, message: 'を半角数字（11桁以内）で入力してください' }
+    validates :phone_number, format: { with: /\A[0-9]{10,11}+\z/, message: 'Please enter half-width numbers (up to 11 digits)' }
     validates :token
   end
 
