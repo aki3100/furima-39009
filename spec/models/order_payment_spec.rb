@@ -27,22 +27,22 @@ RSpec.describe OrderPayment, type: :model do
       it '郵便番号が空欄の場合登録できない' do
         @order_payment.postal_code = ''
         @order_payment.valid?
-        expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください'
+        expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ '
       end
       it '郵便番号は全角数字では登録できない' do
         @order_payment.postal_code = '９９９－９９９９'
         @order_payment.valid?
-        expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください'
+        expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ '
       end
       it '郵便番号に半角英字が含まれると登録できない' do
         @order_payment.postal_code = 'a11-1111'
         @order_payment.valid?
-        expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください'
+        expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ '
       end
       it '郵便番号に全角英字が含まれると登録できない' do
         @order_payment.postal_code = 'Ａ11-1111'
         @order_payment.valid?
-        expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください'
+        expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ '
       end
       it '発送元の地域が「---」だと登録できない' do
         @order_payment.prefecture_id = 0
