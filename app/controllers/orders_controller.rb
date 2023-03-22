@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_item_params,  only: [:index, :create]
+  before_action :authenticate_user!,        only: [:index, :create]
+  before_action :set_item_params,           only: [:index, :create]
 
   def index
     @order_payment = OrderPayment.new
