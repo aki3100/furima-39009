@@ -147,7 +147,7 @@
                     <mxGeometry x="330" y="50" width="110" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="109" value="&amp;nbsp;belongs_to :user&lt;br&gt;&amp;nbsp;has_one :order" style="whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="150" y="680" width="110" height="40" as="geometry"/>
+                    <mxGeometry x="150" y="680" width="110" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="110" value="&amp;nbsp;belongs_to :user&lt;br&gt;&amp;nbsp;belongs_to&amp;nbsp;:item&lt;br&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;has_one :payment&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="480" y="330" width="210" height="60" as="geometry"/>

@@ -6,7 +6,7 @@ RSpec.describe OrderPayment, type: :model do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
       @order_payment = FactoryBot.build(:order_payment, user_id: user.id, item_id: item.id)
-      sleep(1)
+      sleep(0.5)
     end
 
     context '商品が購入できる場合' do
@@ -40,7 +40,12 @@ RSpec.describe OrderPayment, type: :model do
         expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ '
       end
       it '郵便番号に全角英字が含まれると登録できない' do
-        @order_payment.postal_code = 'Ａ11-1111'
+        @order_payment.postal_code = 'Ａ111111'
+        @order_payment.valid?
+        expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ '
+      end
+      it '郵便番号に「-」ががないと登録できない' do
+        @order_payment.postal_code = '1111111'
         @order_payment.valid?
         expect(@order_payment.errors.full_messages).to include 'Postal codeを半角数字で入力してください。良い例:123-4567 良くない例:1234567 １２３４５６７ '
       end
