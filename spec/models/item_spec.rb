@@ -79,12 +79,12 @@ RSpec.describe Item, type: :model do
       it '価格が空白だと登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not a number"
+        expect(@item.errors.full_messages).to include 'Price is not a number'
       end
       it '販売価格の数字が全角だと登録できない' do
         @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not a number"
+        expect(@item.errors.full_messages).to include 'Price is not a number'
       end
       it '販売価格が「￥299」以下だと登録できない' do
         @item.price = 299
@@ -99,7 +99,7 @@ RSpec.describe Item, type: :model do
       it 'ユーザーが紐付いていなければ投稿できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "User must exist"
+        expect(@item.errors.full_messages).to include 'User must exist'
       end
     end
   end

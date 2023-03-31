@@ -67,12 +67,12 @@ RSpec.describe OrderPayment, type: :model do
       it '電話番号は半角数字でないと登録できない' do
         @order_payment.phone_number = '０123456789'
         @order_payment.valid?
-        expect(@order_payment.errors.full_messages).to include "Phone number Please enter half-width numbers (up to 11 digits)"
+        expect(@order_payment.errors.full_messages).to include 'Phone number Please enter half-width numbers (up to 11 digits)'
       end
       it '電話番号に「-」が入っているとと登録できない' do
         @order_payment.phone_number = '012-34567890'
         @order_payment.valid?
-        expect(@order_payment.errors.full_messages).to include "Phone number Please enter half-width numbers (up to 11 digits)"
+        expect(@order_payment.errors.full_messages).to include 'Phone number Please enter half-width numbers (up to 11 digits)'
       end
       it 'トークンが空欄だと登録できない' do
         @order_payment.token = ''
